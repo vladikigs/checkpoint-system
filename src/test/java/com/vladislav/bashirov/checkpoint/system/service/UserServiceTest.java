@@ -5,6 +5,9 @@ import com.vladislav.bashirov.checkpoint.system.entity.User;
 import com.vladislav.bashirov.checkpoint.system.repository.RoomRepository;
 import com.vladislav.bashirov.checkpoint.system.repository.UserRepository;
 import com.vladislav.bashirov.checkpoint.system.service.user.UserService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.glassfish.jersey.client.HttpUrlConnectorProvider;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -14,10 +17,16 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.security.AccessControlException;
+import java.sql.Connection;
+import java.sql.Driver;
+import java.sql.ResultSet;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 @SpringBootTest
@@ -46,7 +55,7 @@ class UserServiceTest {
         Mockito.doReturn(Optional.of(room)).when(roomRepository).findById(2L);
 
         boolean b = userService.enteringTheRoom(6L, 2L);
-        Assertions.assertTrue(b);
+        assertTrue(b);
     }
 
     // (2/4)=false
@@ -78,8 +87,4 @@ class UserServiceTest {
         });
     }
 
-//    @Test
-//    void leavingTheRoom() {
-//
-//    }
 }

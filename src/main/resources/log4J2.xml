@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <RollingFile name="fileLogger" fileName="app-info.log" filePattern="app-info-%d{yyyy-MM-dd}.log">
+            <PatternLayout>
+                <pattern>[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true" />
+            </Policies>
+        </RollingFile>
+        <Async name="AsyncAppender" bufferSize="80">
+            <AppenderRef ref="fileLogger"/>
+        </Async>
+    </Appenders>
+    <Loggers>
+        <Logger name="TRACKING_USER_ACTION_LOGGER" level="INFO"
+                additivity="false">
+            <AppenderRef ref="AsyncAppender" />
+        </Logger>
+        <Root level="INFO">
+            <AppenderRef ref="ConsoleAppender"/>
+        </Root>
+    </Loggers>
+</Configuration>

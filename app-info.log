@@ -1,0 +1,10 @@
+[INFO ] 2021-05-09 22:45:38.734 [http-nio-8080-exec-1] TRACKING_USER_ACTION_LOGGER - user KeyId=3 trying leaving room roomId=3
+[ERROR] 2021-05-09 22:45:38.737 [http-nio-8080-exec-1] TRACKING_USER_ACTION_LOGGER - java.lang.IllegalArgumentException: The user is in the room null and trying to go out of room 3
+[INFO ] 2021-05-09 22:45:39.871 [http-nio-8080-exec-2] TRACKING_USER_ACTION_LOGGER - user KeyId=3 trying enter in roomId=3
+[INFO ] 2021-05-09 22:45:39.872 [http-nio-8080-exec-2] TRACKING_USER_ACTION_LOGGER - user KeyId=3 success enter in roomId=3
+[INFO ] 2021-05-09 22:45:40.408 [http-nio-8080-exec-3] TRACKING_USER_ACTION_LOGGER - user KeyId=3 trying enter in roomId=3
+[ERROR] 2021-05-09 22:45:40.408 [http-nio-8080-exec-3] TRACKING_USER_ACTION_LOGGER - java.lang.IllegalArgumentException: The user is in another room and cannot enter in room 3
+[INFO ] 2021-05-09 22:45:41.527 [http-nio-8080-exec-4] TRACKING_USER_ACTION_LOGGER - user KeyId=3 trying leaving room roomId=3
+[INFO ] 2021-05-09 22:45:41.527 [http-nio-8080-exec-4] TRACKING_USER_ACTION_LOGGER - user KeyId=3 success exit from roomId=3
+[INFO ] 2021-05-09 22:45:41.944 [http-nio-8080-exec-5] TRACKING_USER_ACTION_LOGGER - user KeyId=3 trying leaving room roomId=3
+[ERROR] 2021-05-09 22:45:41.944 [http-nio-8080-exec-5] TRACKING_USER_ACTION_LOGGER - java.lang.IllegalArgumentException: The user is in the room null and trying to go out of room 3
