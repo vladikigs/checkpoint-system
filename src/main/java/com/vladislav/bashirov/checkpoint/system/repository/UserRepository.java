@@ -14,7 +14,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Transactional
     @Modifying
     @Query(
-            value = "insert into User (key_id, login) values (:keyId, :login)",
+            value = "insert into user (key_id, login) values (:keyId, :login)",
             nativeQuery = true
           )
     void addUser(Long keyId, String login);

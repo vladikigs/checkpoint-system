@@ -26,14 +26,18 @@ public class FillingDatabaseService implements FillingDatabase{
 
     @Override
     public void fillingInitDatabaseData() {
-        for (int i = 1; i <= 10000; i++) {
-            User user = new User(null, "login-" + i);
-            userRepository.addUser(user.getKeyId(), user.getLogin());
+        if (userRepository.count() == 0) {
+            for (int i = 1; i <= 10000; i++) {
+                User user = new User(null, "login-" + i);
+                userRepository.addUser(user.getKeyId(), user.getLogin());
+            }
         }
 
-        for (int i = 1; i <= 5; i++) {
-            Room room = new Room((long) i);
-            roomRepository.save(room);
+        if (roomRepository.count() == 0) {
+            for (int i = 1; i <= 5; i++) {
+                Room room = new Room((long) i);
+                roomRepository.save(room);
+            }
         }
     }
 }

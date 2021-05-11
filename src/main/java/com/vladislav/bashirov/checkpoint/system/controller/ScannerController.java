@@ -23,7 +23,6 @@ public class ScannerController {
     }
 
     @GetMapping("/check")
-    @CrossOrigin(origins = "http://localhost:4200")
     @ResponseBody
     public boolean entranceToTheRoom(@RequestParam("roomId") long roomId,
                                   @RequestParam("entrance") boolean entrance,
