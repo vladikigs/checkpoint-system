@@ -1,0 +1,46 @@
+version: "3.3"
+
+services:
+ 
+  frontend:
+    image: vladikigs/checkpoint-system-frontend
+    ports:
+      - "4200:80"
+    restart: always
+
+  db:  
+    image: mysql:8
+    ports:
+      - "3306:3306"
+    cap_add:
+      - SYS_NICE
+    restart: always
+    environment:
+      MYSQL_USER: vlad
+      MYSQL_PASSWORD: strong_password
+      MYSQL_DATABASE: checkpointSystemDB
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - /data/checkpoint_system_db:/var/lib/mysql
+    networks:
+      - backend
+
+  checkpoint-system-server:
+      build: .
+      depends_on: 
+        - db
+      environment:
+        SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/checkpointSystemDB?serverTimezone=UTC&createDatabaseIfNotExist=true
+        MYSQL_DATABASE: checkpointSystemDB
+        SPRING_DATASOURCE_USERNAME: vlad
+        SPRING_DATASOURCE_PASSWORD: strong_password  
+      ports:
+        - "8080:8080"
+      restart: always
+      networks:
+        - backend 
+        
+
+  
+networks:
+  backend:
